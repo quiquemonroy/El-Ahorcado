@@ -1,4 +1,5 @@
 import os, time, random
+#noseque
 para_rand = """fehaciente
 ablandar
 aborigen
