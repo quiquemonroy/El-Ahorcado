@@ -641,9 +641,11 @@ voluntario""".split()
 for palabra in para_rand:
   if "á" in palabra or "é" in palabra or "í" in palabra or "ó" in palabra or "ú" in palabra:
     para_rand.remove(palabra)
-palabra = random.choice(para_rand) #palabra para probar, luego habra que poner esto en random.
+palabra = "pruebita"
+#palabra = random.choice(para_rand) 
 espacios = [] # esta es la lista para meter las rallitas "__ __ __ __ __"
 lista_palabra = [] # esta es la lista para las letras de la palabra P A L A B R A
+lista_palabra_st = []
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
 GREEN = "\033[0;32m"
@@ -662,23 +664,6 @@ LIGHT_CYAN = "\033[1;36m"
 LIGHT_WHITE = "\033[1;37m"
 END = "\033[0m"
 def randomColor(frase):
-  BLACK = "\033[0;30m"
-  RED = "\033[0;31m"
-  GREEN = "\033[0;32m"
-  BROWN = "\033[0;33m"
-  BLUE = "\033[0;34m"
-  PURPLE = "\033[0;35m"
-  CYAN = "\033[0;36m"
-  LIGHT_GRAY = "\033[0;37m"
-  DARK_GRAY = "\033[1;30m"
-  LIGHT_RED = "\033[1;31m"
-  LIGHT_GREEN = "\033[1;32m"
-  YELLOW = "\033[1;33m"
-  LIGHT_BLUE = "\033[1;34m"
-  LIGHT_PURPLE = "\033[1;35m"
-  LIGHT_CYAN = "\033[1;36m"
-  LIGHT_WHITE = "\033[1;37m"
-  END = "\033[0m"
   colores = [RED, BLUE, BLACK, RED, GREEN, BROWN, BLUE, PURPLE, CYAN, LIGHT_GRAY, DARK_GRAY, LIGHT_RED, LIGHT_GREEN, YELLOW, LIGHT_BLUE, LIGHT_PURPLE, LIGHT_CYAN, LIGHT_WHITE,END]
   rand = random.choice(colores)
   for letra in frase:
@@ -686,6 +671,7 @@ def randomColor(frase):
     print(letra, end="")
   print(END)
 
+def empezar():
 for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
     espacios.append("__")
 for letra in palabra: # este bucle mete en una lista las letras de la palabra.
