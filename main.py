@@ -641,8 +641,8 @@ voluntario""".split()
 for palabra in para_rand:
   if "á" in palabra or "é" in palabra or "í" in palabra or "ó" in palabra or "ú" in palabra:
     para_rand.remove(palabra)
-palabra = "pruebita"
-#palabra = random.choice(para_rand) 
+#palabra = "pruebita"
+palabra = random.choice(para_rand) 
 espacios = [] # esta es la lista para meter las rallitas "__ __ __ __ __"
 lista_palabra = [] # esta es la lista para las letras de la palabra P A L A B R A
 lista_palabra_st = []
@@ -672,10 +672,18 @@ def randomColor(frase):
   print(END)
 
 def empezar():
-for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
+  palabra = random.choice(para_rand)
+  for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
     espacios.append("__")
-for letra in palabra: # este bucle mete en una lista las letras de la palabra.
+  for letra in palabra: # este bucle mete en una lista las letras de la palabra.
     lista_palabra.append(letra)
+  intentos = 0  
+  usadas.clear()
+  win=0
+  fallos = 0
+  #usadas()
+  #palabras()
+  #rallitas()
 intentos=0
 usadas = []
 win=0
@@ -748,8 +756,9 @@ def rallitas():# imprime la lista de rallitas.
   
 # imprime la lista de rallitas.
 
+empezar()
 while True: # bucle del juego
-  
+  print(palabra)
   titulo="---JUEGO DEL AHORCADO---".upper()
   randomColor(titulo)
   print()
@@ -847,6 +856,7 @@ while True: # bucle del juego
     print("yeahh!")
     time.sleep(0.5)
     win=+ len(palabra)
+    os.system("clear")
     continue
   elif len(letra)>4 and letra != palabra:
     intentos+=1
