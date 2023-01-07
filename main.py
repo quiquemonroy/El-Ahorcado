@@ -638,13 +638,14 @@ transporte
 trementina
 vocacional
 voluntario""".split()
-for palabra in para_rand:
-  if "á" in palabra or "é" in palabra or "í" in palabra or "ó" in palabra or "ú" in palabra:
-    para_rand.remove(palabra)
+#for palabra in para_rand:
+ # if "á" in palabra or "é" in palabra or "í" in palabra or "ó" in palabra or "ú" in palabra:
+   # para_rand.remove(palabra)
 #palabra = "pruebita"
-palabra = random.choice(para_rand) 
-espacios = [] # esta es la lista para meter las rallitas "__ __ __ __ __"
-lista_palabra = [] # esta es la lista para las letras de la palabra P A L A B R A
+palabra = random.choice(para_rand)
+espacios = []  # esta es la lista para meter las rallitas "__ __ __ __ __"
+lista_palabra = [
+]  # esta es la lista para las letras de la palabra P A L A B R A
 lista_palabra_st = []
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
@@ -664,31 +665,42 @@ LIGHT_CYAN = "\033[1;36m"
 LIGHT_WHITE = "\033[1;37m"
 END = "\033[0m"
 def randomColor(frase):
-  colores = [RED, BLUE, BLACK, RED, GREEN, BROWN, BLUE, PURPLE, CYAN, LIGHT_GRAY, DARK_GRAY, LIGHT_RED, LIGHT_GREEN, YELLOW, LIGHT_BLUE, LIGHT_PURPLE, LIGHT_CYAN, LIGHT_WHITE,END]
+  colores = [
+    RED, BLUE, BLACK, RED, GREEN, BROWN, BLUE, PURPLE, CYAN, LIGHT_GRAY,
+    DARK_GRAY, LIGHT_RED, LIGHT_GREEN, YELLOW, LIGHT_BLUE, LIGHT_PURPLE,
+    LIGHT_CYAN, LIGHT_WHITE, END
+  ]
   rand = random.choice(colores)
   for letra in frase:
-    print(random.choice(colores), end= "")
+    print(random.choice(colores), end="")
     print(letra, end="")
   print(END)
 
-def empezar():
-  palabra = random.choice(para_rand)
-  for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
-    espacios.append("__")
-  for letra in palabra: # este bucle mete en una lista las letras de la palabra.
-    lista_palabra.append(letra)
-  intentos = 0  
-  usadas.clear()
-  win=0
-  fallos = 0
-  #usadas()
-  #palabras()
-  #rallitas()
-intentos=0
+
 usadas = []
-win=0
+win = 0
 fallos = 0
-HANGMANPICS = ['''
+intentos=0
+def empezar():
+  lista_palabra.clear()
+  espacios.clear()
+  usadas.clear()
+  lista_palabra_st.clear()
+  palabra = random.choice(para_rand)
+  for letra in palabra:  # este bucle mete en la lista de rallitas las rallitas.
+    espacios.append("__")
+  for letra in palabra:  # este bucle mete en una lista las letras de la palabra.
+    lista_palabra.append(letra)
+  intentos = 0
+  win = 0
+  fallos = 0
+  intentos=0
+
+
+
+
+HANGMANPICS = [
+  '''
   +---+
   |   |
       |
@@ -737,29 +749,33 @@ HANGMANPICS = ['''
  /|\  |
  / \  |
       |
-=========''']
+========='''
+]
 def usadas_():
   for letra in usadas:
-    print(f"{RED}{letra.upper()}-", end= "")
+    print(f"{RED}{letra.upper()}-", end="")
   print(END)
-def palabras(): # imprime la lista de letras
+
+
+def palabras():  # imprime la lista de letras
   for i in lista_palabra:
     print(i.capitalize(), end="")
   print("\n")
-  
-   # imprime la lista de letras.
-def rallitas():# imprime la lista de rallitas.
+
+
+  # imprime la lista de letras.
+def rallitas():  # imprime la lista de rallitas.
   for i in espacios:
     print(i, end=" ")
   print("\n")
-  
-  
+
+
 # imprime la lista de rallitas.
 
 empezar()
-while True: # bucle del juego
+while True:  # bucle del juego
   print(palabra)
-  titulo="---JUEGO DEL AHORCADO---".upper()
+  titulo = "---JUEGO DEL AHORCADO---".upper()
   randomColor(titulo)
   print()
   print(f"La palabra que buscas tiene {RED}{len(palabra)}{END} letras.")
@@ -770,28 +786,29 @@ while True: # bucle del juego
   print(LIGHT_CYAN)
   rallitas()
   usadas_()
-  print(END)  
+  print(END)
   if win == len(palabra):
     time.sleep(0.3)
     print()
     print(f"{GREEN}¡GANASTE! HAS SALVADO EL CUELLO!{END}")
     print()
     time.sleep(2)
-    para_rand.remove(palabra)
+    #para_rand.remove(palabra)
     otra = input(f"{YELLOW}Quieres jugar otra vez? {RED}(s/n)\n >{GREEN} ")
     print(END)
     if otra == "s" or otra == "":
-      fallos=0
-      win=0
-      intentos = 0
-      lista_palabra.clear()
-      espacios.clear()
-      usadas.clear()
-      palabra = random.choice(para_rand)
+      #fallos=0
+      #win=0
+      #intentos = 0
+      #lista_palabra.clear()
+      #espacios.clear()
+      #usadas.clear()
+      #palabra = random.choice(para_rand)
+      empezar()
       os.system("clear")
-      for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
+      for letra in palabra:  # este bucle mete en la lista de rallitas las rallitas.
         espacios.append("__")
-      for letra in palabra: # este bucle mete en una lista las letras de la palabra.
+      for letra in palabra:  # este bucle mete en una lista las letras de la palabra.
         lista_palabra.append(letra)
       os.system("clear")
       continue
@@ -802,7 +819,7 @@ while True: # bucle del juego
       print("Ok, espero que lo hayas pasado bien.")
       time.sleep(2)
       print()
-      print("Hecho por ",end="")
+      print("Hecho por ", end="")
       randomColor("quique.")
       time.sleep(2)
       os.system("clear")
@@ -816,20 +833,20 @@ while True: # bucle del juego
     otra = input(f"{YELLOW}Quieres jugar otra vez? {RED}(s/n)\n >{GREEN} ")
     print(END)
     if otra == "s" or otra == "":
-      fallos=0
-      win=0
+      fallos = 0
+      win = 0
       intentos = 0
       lista_palabra.clear()
       espacios.clear()
       usadas.clear()
       palabra = random.choice(para_rand)
       os.system("clear")
-      for letra in palabra: # este bucle mete en la lista de rallitas las rallitas.
+      for letra in palabra:  # este bucle mete en la lista de rallitas las rallitas.
         espacios.append("__")
-      for letra in palabra: # este bucle mete en una lista las letras de la palabra.
+      for letra in palabra:  # este bucle mete en una lista las letras de la palabra.
         lista_palabra.append(letra)
       os.system("clear")
-      
+
       continue
       #poner la funcion de palabra random
     elif otra == "n":
@@ -838,48 +855,49 @@ while True: # bucle del juego
       print("Ok, espero que lo hayas pasado bien.")
       time.sleep(2)
       print()
-      print("Hecho por ",end="")
+      print("Hecho por ", end="")
       randomColor("quique.")
       time.sleep(2)
       os.system("clear")
       exit()
-      
-  letra = input(f"ELIGE UNA LETRA Y PULSA ENTER \n\n >  {LIGHT_CYAN}").strip().lower()
+
+  letra = input(
+    f"ELIGE UNA LETRA Y PULSA ENTER \n\n >  {LIGHT_CYAN}").strip().lower()
   print(END)
   #print(palabra)
-  
+
   time.sleep(0.3)
-  intentos+=1
+  intentos += 1
   if letra.lower() == palabra.lower():
-    for i in range(0,len(palabra)):
-      espacios[i]= letra[i].capitalize()
+    for i in range(0, len(palabra)):
+      espacios[i] = letra[i].capitalize()
     print("yeahh!")
     time.sleep(0.5)
-    win=+ len(palabra)
+    win = +len(palabra)
     os.system("clear")
     continue
-  elif len(letra)>4 and letra != palabra:
-    intentos+=1
-    fallos+= 2
+  elif len(letra) > 4 and letra != palabra:
+    intentos += 1
+    fallos += 2
   if letra not in usadas:
     usadas.append(letra)
     count = 0
-    for i in range(0,len(palabra)):           
+    for i in range(0, len(palabra)):
       if letra == palabra[i]:
-        count+=1        
-        espacios[i]= letra.capitalize()
+        count += 1
+        espacios[i] = letra.capitalize()
     if count > 0:
       print(f"La letra {letra} está {count} veces")
-      win+=count
+      win += count
     elif count == 0:
       print(f"{LIGHT_RED}------NOP------{END}")
-      fallos+=1
+      fallos += 1
 
-
-    
   elif letra in usadas:
-    print(f"{BLUE}NO PUEDES PREGUNTAR POR LA LETRA '{letra.capitalize()}' MÁS DE UNA VEZ{END}")
+    print(
+      f"{BLUE}NO PUEDES PREGUNTAR POR LA LETRA '{letra.capitalize()}' MÁS DE UNA VEZ{END}"
+    )
   print()
   print()
   time.sleep(1.3)
-  os.system("clear")  
+  os.system("clear")
